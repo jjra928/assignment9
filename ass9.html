@@ -1,0 +1,44 @@
+<!--
+  File:  ass9.html
+  Assignment9 : Using AngularJS
+  Joseph Raffa, UMass Lowell Computer Science Undergraduate, jraffa@cs.uml.edu
+  Date: 12-09-2014
+-->
+<!DOCTYPE! html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Unlicensed NES Games</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+		<script src="ass9.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/ass9.css"></link>
+  </head>
+  <body ng-controller="ass9Ctrl">
+  	<div id="headerDiv">
+  		<h1 id="header">Table of Unlicensed Nes Games</h1>
+  	</div>
+  	
+  	<!--
+  		code for search bar was taken from Curran Kelleher's introduction to angularjs example 22
+  		-->
+  	<div id="searchDiv">
+  		Search:<br>
+			<input ng-model="query" type="text"/>
+  	</div>
+  	<!--
+  		code for table populated with json info from Curran Kelleher's introToAngular screencast example #26
+  		-->
+    <table id="stateTable">
+      <tr>
+        <th><a href="" ng-click="sortfield = 'name'; reverse = 	!reverse" class="bg" >Title</span></th>
+        <th><a href="" ng-click="sortfield = 'release'; reverse = !reverse">Release Date</th>
+        <th><a href="" ng-click="sortfield = 'publisher'; reverse = !reverse">Publisher</th>
+      </tr>
+      <tr ng-repeat="state in states | filter:query | orderBy:sortfield:reverse">
+        <td>{{state.name}}</td>
+        <td>{{state.release}}</td>
+        <td>{{state.publisher}}</td>
+      </tr>
+    </table>
+  </body>
+</html>
